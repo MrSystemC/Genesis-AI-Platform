@@ -1,0 +1,8 @@
+# Android / Termux compatible profile
+fastapi==0.103.2
+uvicorn==0.23.2
+pydantic==1.10.15
+sqlalchemy==2.0.23
+python-dotenv==1.0.1
+passlib==1.7.4
+bcrypt==4.1.2

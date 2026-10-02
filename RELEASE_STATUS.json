@@ -1,0 +1,18 @@
+{
+  "name": "Genesis AI Platform",
+  "version": "1.0.0",
+  "code": "GA-1.0.0",
+  "status": "ready-for-deployment",
+  "qa": {
+    "pytest_end_to_end": "passed",
+    "autorun_supervisor": "passed",
+    "live_http_smoke": "passed",
+    "frontend_javascript_syntax": "passed",
+    "frontend_headless_render": "passed-zero-page-errors",
+    "python_compile": "passed",
+    "shell_syntax": "passed",
+    "demo_seed": "passed"
+  },
+  "deployment_modes": ["linux", "docker-sqlite", "docker-postgresql", "termux"],
+  "external_operator_dependencies": ["domain/tls for public launch", "payment-provider credentials for automated card billing", "email provider for transactional email if required"]
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=Genesis AI Platform
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/genesis
+EnvironmentFile=/opt/genesis/.env
+ExecStart=/opt/genesis/.venv/bin/uvicorn genesis.app:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+User=genesis
+Group=genesis
+
+[Install]
+WantedBy=multi-user.target

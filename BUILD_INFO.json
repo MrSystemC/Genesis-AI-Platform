@@ -1,0 +1,10 @@
+{
+  "built_on": "2026-10-01",
+  "source_archive": "Genesis-0.zip",
+  "source_sha256": "8f8a6e18eac57ff477898674ab3da5d703dc8a4b739ca0400ba19d9515b24c2c",
+  "source_extracted_files": 1342,
+  "source_python_files": 1041,
+  "legacy_backup_before_integration_files": 501,
+  "versioned_installer_scripts": 40,
+  "clean_runtime_entrypoint": "genesis.app:app"
+}

@@ -1,0 +1,15 @@
+{
+"name":"Genesis-0",
+"version":"1.0.0",
+"stage":"production-ready",
+"status":"online",
+"components":[
+"core",
+"autonomous",
+"knowledge",
+"governance",
+"storage",
+"dashboard",
+"api"
+]
+}

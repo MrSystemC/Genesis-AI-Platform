@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#070b12" />
+  <title>Genesis AI Platform</title>
+  <link rel="stylesheet" href="/assets/app.css" />
+</head>
+<body>
+  <div id="toast-root"></div>
+  <section id="landing" class="landing">
+    <nav class="landing-nav">
+      <div class="brand"><span class="brand-mark">G</span><span>GENESIS</span><small>AI PLATFORM</small></div>
+      <div class="nav-actions"><button class="ghost" data-auth="login">Sign in</button><button class="primary" data-auth="register">Launch console</button></div>
+    </nav>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> AUTONOMOUS INTELLIGENCE INFRASTRUCTURE</div>
+        <h1>Build worlds where<br/><em>intelligence evolves.</em></h1>
+        <p>Genesis is an operating environment for autonomous AI agents, digital societies and scenario simulations — with live observability, APIs and enterprise controls.</p>
+        <div class="hero-actions"><button class="primary big" data-auth="register">Create your first world</button><button class="ghost big" data-auth="login">Open console</button></div>
+        <div class="trust-row"><span>Agent Runtime</span><span>World Engine</span><span>Simulation Lab</span><span>API-first</span></div>
+      </div>
+      <div class="hero-visual panel-glow">
+        <canvas id="hero-canvas"></canvas>
+        <div class="world-overlay">
+          <div><small>GENESIS EARTH</small><strong>LIVE</strong></div>
+          <div class="mini-kpis"><span><b>42K</b> agents</span><span><b>+18.4%</b> economy</span><span><b>87</b> tech index</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-strip">
+      <article><span>01</span><h3>Autonomous worlds</h3><p>Run long-lived simulations with agents, events, economies, resource pressure and evolving institutions.</p></article>
+      <article><span>02</span><h3>Agent intelligence</h3><p>Track role, knowledge, energy, influence, wealth and memory across representative autonomous agents.</p></article>
+      <article><span>03</span><h3>Decision intelligence</h3><p>Turn simulation state into interpretable signals, risks and scenario-derived opportunities.</p></article>
+      <article><span>04</span><h3>Infrastructure layer</h3><p>Manage workspaces, API keys, plan limits, audit logs and deployment from a single control plane.</p></article>
+    </div>
+  </section>
+
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="close-auth" class="modal-close">×</button>
+      <div class="brand auth-brand"><span class="brand-mark">G</span><span>GENESIS</span></div>
+      <h2 id="auth-title">Sign in</h2>
+      <p id="auth-subtitle">Continue to your autonomous intelligence workspace.</p>
+      <form id="auth-form">
+        <label id="name-field" class="hidden">Name<input id="auth-name" autocomplete="name" /></label>
+        <label>Email<input id="auth-email" type="email" autocomplete="email" required /></label>
+        <label>Password<input id="auth-password" type="password" autocomplete="current-password" required minlength="10" /></label>
+        <button id="auth-submit" class="primary full" type="submit">Sign in</button>
+      </form>
+      <div id="auth-error" class="form-error"></div>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand side-brand"><span class="brand-mark">G</span><span>GENESIS</span><small>CONTROL PLANE</small></div>
+      <nav id="main-nav">
+        <button data-view="overview" class="active"><span>◫</span>Overview</button>
+        <button data-view="worlds"><span>◎</span>Worlds</button>
+        <button data-view="lab"><span>◈</span>Simulation Lab</button>
+        <button data-view="agents"><span>◌</span>Agents</button>
+        <button data-view="analytics"><span>⌁</span>Analytics</button>
+        <button data-view="marketplace"><span>◇</span>Marketplace</button>
+        <button data-view="team"><span>♢</span>Workspace</button>
+        <button data-view="developer"><span>⌘</span>API & Developer</button>
+        <button data-view="billing"><span>◧</span>Plans & Usage</button>
+        <button data-view="account"><span>◉</span>Account</button>
+        <button data-view="admin" id="admin-nav" class="hidden"><span>⚙</span>Admin</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div id="workspace-pill" class="workspace-pill"><span class="status-dot"></span><div><small>WORKSPACE</small><b>Loading…</b></div></div>
+        <button id="logout-btn" class="logout">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">GENESIS CLOUD / <span id="breadcrumb">OVERVIEW</span></div><h2 id="view-title">Mission Control</h2></div>
+        <div class="top-actions"><select id="workspace-select" class="workspace-select" aria-label="Workspace"></select><span id="system-status" class="system-status"><i></i> SYSTEM ONLINE</span><button id="create-world-top" class="primary">+ New world</button><button id="profile-btn" class="avatar">G</button></div>
+      </header>
+
+      <section id="view-overview" class="view active-view">
+        <div class="kpi-grid">
+          <article class="kpi"><small>ACTIVE WORLDS</small><strong id="kpi-worlds">0</strong><span id="kpi-running">0 running</span></article>
+          <article class="kpi"><small>REPRESENTATIVE AGENTS</small><strong id="kpi-agents">0</strong><span>autonomous runtime</span></article>
+          <article class="kpi"><small>SIMULATION YEARS</small><strong id="kpi-years">0</strong><span>across workspace</span></article>
+          <article class="kpi"><small>RECORDED EVENTS</small><strong id="kpi-events">0</strong><span>scenario history</span></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel span-2"><div class="panel-head"><div><small>LIVE NETWORK</small><h3>Autonomous World Mesh</h3></div><span class="live-badge">LIVE</span></div><canvas id="overview-canvas" class="overview-canvas"></canvas></article>
+          <article class="panel"><div class="panel-head"><div><small>RECENT</small><h3>Worlds</h3></div><button class="link-btn" data-view="worlds">View all</button></div><div id="overview-worlds" class="world-list compact"></div></article>
+          <article class="panel span-2"><div class="panel-head"><div><small>ACTIVITY</small><h3>Simulation pulse</h3></div></div><div id="pulse-chart" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><small>INTELLIGENCE</small><h3>Platform signal</h3></div></div><div class="signal-card"><span class="signal-icon">⌁</span><p id="overview-signal">Create a world to begin generating scenario intelligence.</p></div></article>
+        </div>
+      </section>
+
+      <section id="view-worlds" class="view">
+        <div class="section-toolbar"><div><p>Manage autonomous environments, pause compute and open live simulation state.</p></div><button class="primary" id="create-world-btn">+ Create world</button></div>
+        <div id="world-grid" class="world-grid"></div>
+      </section>
+
+      <section id="view-lab" class="view">
+        <div id="lab-empty" class="empty-state"><div class="orb-icon">◎</div><h3>Select a world</h3><p>Open any world from the Worlds screen to enter the Simulation Lab.</p><button class="primary" data-view="worlds">Browse worlds</button></div>
+        <div id="lab-content" class="hidden">
+          <div class="lab-toolbar"><div><small>WORLD INSTANCE</small><h3 id="lab-name">—</h3></div><div class="sim-controls"><select id="speed-select"><option value="1">1×</option><option value="2">2×</option><option value="5">5×</option><option value="10">10×</option></select><button id="lab-start" class="primary">Start</button><button id="lab-pause" class="ghost">Pause</button><button id="lab-step" class="ghost">+1 year</button></div></div>
+          <div class="lab-grid">
+            <article class="panel world-stage span-2"><canvas id="world-canvas"></canvas><div class="world-hud"><span id="hud-status">CREATED</span><span>YEAR <b id="hud-year">0</b></span><span>POP <b id="hud-pop">0</b></span></div></article>
+            <article class="panel"><div class="panel-head"><div><small>WORLD STATE</small><h3>Vitals</h3></div></div><div id="world-vitals" class="vital-list"></div></article>
+            <article class="panel"><div class="panel-head"><div><small>EVENT STREAM</small><h3>History</h3></div></div><div id="event-stream" class="event-stream"></div></article>
+            <article class="panel span-2"><div class="panel-head"><div><small>TIMELINE</small><h3>Evolution curves</h3></div><div class="legend"><span>Economy</span><span>Technology</span><span>Stability</span></div></div><canvas id="timeline-canvas" class="timeline-canvas"></canvas></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-agents" class="view">
+        <div class="section-toolbar"><div><p>Observe and deploy autonomous agents with goals, skills, memory and world-level impact.</p></div><div class="toolbar-actions"><select id="agent-world-select"></select><button id="deploy-agent-btn" class="primary">+ Deploy agent</button></div></div>
+        <div class="panel"><div id="agents-table" class="table-wrap"></div></div>
+      </section>
+
+      <section id="view-analytics" class="view">
+        <div class="section-toolbar"><div><p>Scenario-derived intelligence from the current world state — not real-world forecasting.</p></div><select id="analytics-world-select"></select></div>
+        <div id="analytics-content" class="analytics-grid"></div>
+      </section>
+
+      <section id="view-marketplace" class="view">
+        <div class="section-toolbar"><div><p>Start from curated environment templates designed for different autonomous-system experiments.</p></div></div>
+        <div id="template-grid" class="template-grid"></div>
+      </section>
+
+
+      <section id="view-team" class="view">
+        <div class="section-toolbar"><div><p>Manage workspace collaborators and permission roles.</p></div><button id="add-member-btn" class="primary">+ Add member</button></div>
+        <div class="panel"><div class="panel-head"><div><small>ACCESS CONTROL</small><h3>Workspace members</h3></div></div><div id="team-members" class="table-wrap"></div></div>
+      </section>
+
+      <section id="view-developer" class="view">
+        <div class="developer-grid">
+          <article class="panel"><div class="panel-head"><div><small>AUTHENTICATION</small><h3>API keys</h3></div><button id="new-key-btn" class="primary small">Create key</button></div><p class="muted">Use <code>X-API-Key</code> to call Genesis from external services. Secret values are only shown once.</p><div id="api-key-list" class="key-list"></div></article>
+          <article class="panel"><div class="panel-head"><div><small>QUICK START</small><h3>REST API</h3></div></div><pre><code>curl http://localhost:8000/api/v1/worlds \
+  -H "X-API-Key: gsk_..."</code></pre><p class="muted">Interactive OpenAPI documentation is available at <a href="/docs" target="_blank">/docs</a>.</p></article>
+        </div>
+      </section>
+
+      <section id="view-billing" class="view">
+        <div class="section-toolbar"><div><p>Compute entitlements are enforced by plan. Payment-provider integration can be enabled for commercial deployment.</p></div></div>
+        <div id="plans-grid" class="plans-grid"></div>
+      </section>
+
+
+      <section id="view-account" class="view">
+        <div class="developer-grid">
+          <article class="panel"><div class="panel-head"><div><small>PROFILE</small><h3>Account</h3></div></div><form id="profile-form"><label class="form-label">Name<input id="profile-name" class="form-input" /></label><label class="form-label">Email<input id="profile-email" class="form-input" disabled /></label><div class="profile-meta" id="profile-meta"></div><button class="primary" type="submit">Save profile</button></form></article>
+          <article class="panel"><div class="panel-head"><div><small>SECURITY</small><h3>Change password</h3></div></div><form id="password-form"><label class="form-label">Current password<input id="password-current" class="form-input" type="password" required /></label><label class="form-label">New password<input id="password-new" class="form-input" type="password" minlength="10" required /></label><button class="primary" type="submit">Update password</button></form></article>
+        </div>
+      </section>
+
+      <section id="view-admin" class="view">
+        <div class="kpi-grid admin-kpis"><article class="kpi"><small>USERS</small><strong id="admin-users-count">—</strong></article><article class="kpi"><small>WORLDS</small><strong id="admin-worlds-count">—</strong></article><article class="kpi"><small>RUNNING</small><strong id="admin-running-count">—</strong></article><article class="kpi"><small>AGENTS</small><strong id="admin-agents-count">—</strong></article></div>
+        <div class="dashboard-grid"><article class="panel span-2"><div class="panel-head"><div><small>ACCOUNTS</small><h3>Users</h3></div></div><div id="admin-users" class="table-wrap"></div></article><article class="panel"><div class="panel-head"><div><small>AUDIT</small><h3>Recent actions</h3></div></div><div id="admin-audit" class="event-stream"></div></article><article class="panel span-2"><div class="panel-head"><div><small>INFRASTRUCTURE</small><h3>World operations</h3></div></div><div id="admin-worlds" class="table-wrap"></div></article></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="world-modal" class="modal hidden">
+    <div class="modal-card wide">
+      <button id="close-world" class="modal-close">×</button>
+      <div class="eyebrow">NEW AUTONOMOUS ENVIRONMENT</div><h2>Create world</h2>
+      <form id="world-form" class="world-form">
+        <label>Name<input id="world-name" required minlength="2" value="Genesis Earth" /></label>
+        <label>Template<select id="world-template"></select></label>
+        <label>Population<input id="world-population" type="number" min="10" max="10000000" value="1000" /></label>
+        <label>Representative agents<input id="world-agents" type="number" min="4" max="250" value="36" /></label>
+        <label class="full-row">Description<textarea id="world-description" rows="3" placeholder="What should this world explore?"></textarea></label>
+        <div class="full-row template-preview" id="template-preview"></div>
+        <button class="primary full-row" type="submit">Initialize world</button>
+      </form>
+      <div id="world-error" class="form-error"></div>
+    </div>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+PLANS = {
+    "free": {
+        "name": "Free",
+        "price_monthly": 0,
+        "worlds": 2,
+        "agents_per_world": 48,
+        "api_keys": 1,
+        "max_speed": 2,
+        "description": "Explore autonomous worlds and core analytics.",
+    },
+    "creator": {
+        "name": "Creator",
+        "price_monthly": 49,
+        "worlds": 10,
+        "agents_per_world": 100,
+        "api_keys": 5,
+        "max_speed": 5,
+        "description": "Build scenarios, use API access and export simulation data.",
+    },
+    "professional": {
+        "name": "Professional",
+        "price_monthly": 499,
+        "worlds": 50,
+        "agents_per_world": 250,
+        "api_keys": 20,
+        "max_speed": 10,
+        "description": "Research and team-scale simulation workloads.",
+    },
+    "enterprise": {
+        "name": "Enterprise",
+        "price_monthly": None,
+        "worlds": 1000,
+        "agents_per_world": 1000,
+        "api_keys": 100,
+        "max_speed": 20,
+        "description": "Dedicated deployment, governance, SLA and custom limits.",
+    },
+}

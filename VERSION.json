@@ -1,0 +1,7 @@
+{
+  "name": "Genesis AI Platform",
+  "version": "1.0.1",
+  "release": "Termux Ready RC",
+  "runtime": "FastAPI + SQLAlchemy",
+  "status": "release-candidate-tested"
+}
